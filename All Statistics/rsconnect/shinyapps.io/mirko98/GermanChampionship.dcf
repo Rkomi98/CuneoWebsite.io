@@ -5,7 +5,7 @@ account: mirko98
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 12921758
-bundleId: 9329144
+bundleId: 9579217
 url: https://mirko98.shinyapps.io/GermanChampionship/
 version: 1
 asMultiple: FALSE

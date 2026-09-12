@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://raw.githubusercontent.com/Rkomi98/CuneoWebsite.io/refs/heads/main/Scoreboard/templates/SFONDO_CUNEO.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 95vh;
+            width: 95%;
+            max-width: 1600px;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .header-panel {
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        .team-header-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2rem; /* Reduced gap between team elements */
+        }
+
+        .team-name-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center team name and set wins */
+        }
+
+        .team-name {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem; /* Space between name and set wins box */
+        }
+
+        .set-wins-box {
+            background-color: #964343; /* Background color like player number box */
+            color: white;
+            border-radius: 50%;
+            width: 80px; /* Adjusted size for set wins box */
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem; /* Font size for set wins number */
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6); /* Subtle shadow */
+        }
+
+
+        .info-container {
+            background-color: rgba(0, 0, 0, 0.6); /* Container for set info */
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+            text-align: center; /* Center align text within info container */
+        }
+
+        .set-info-line {
+            font-size: 4rem; /* Size for "Set: Current_Set" */
+            margin-bottom: 1rem; /* Spacing below set info line */
+            font-weight: bold;
+        }
+
+        .current-score {
+            font-size: 20rem; /* Still very large for current score */
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 1.5rem; /* Spacing below current score */
+        }
+
+        .past-sets-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            text-decoration: underline; /* Underline for title */
+        }
+
+        .past-set-results {
+            display: flex;
+            justify-content: center; /* Center past set results horizontally */
+            gap: 1.5rem; /* Spacing between past set scores */
+        }
+
+        .past-set-result {
+            font-size: 4rem;
+            margin: 0; /* Remove default margins */
+            padding: 0.5rem 1rem; /* Padding around each score */
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly visible background */
+            border-radius: 10px; /* Rounded corners for past set scores */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-panel">
+            <div class="team-header-row">
+                <div class="team-name-container">
+                    <div class="team-name" id="team-name-left"> {{ summary_data[0].team_name }} </div>
+                    <div class="set-wins-box"> {{ summary_data[-1].team_set_wins.split(' - ')[0] }} </div>
+                </div>
+                <div class="team-name-container">
+                    <div class="team-name" id="team-name-right"> {{ summary_data[1].team_name }} </div>
+                    <div class="set-wins-box"> {{ summary_data[-1].team_set_wins.split(' - ')[1] }} </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-container">
+            <div class="set-info-line">Set: {{ summary_data[-1].current_set }}</div>
+            <div class="current-score" id="current-game-score">
+                {{ summary_data[-1].set_score }}
+            </div>
+            <div class="past-sets-title">Past Set Results:</div>
+            <div class="past-set-results">
+                {% for score in summary_data[-1].past_set_scores %}
+                <div class="past-set-result">{{ score }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

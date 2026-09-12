@@ -1,0 +1,13 @@
+name: B1_Championship_stat
+title: B1_Championship_stat
+username: mirkoscout
+account: mirkoscout
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13208280
+bundleId: 10268461
+url: https://mirkoscout.shinyapps.io/B1_Championship_stat/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: B1_B|B1_Scout|B1_SQ|B1_SQ_B
